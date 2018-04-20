@@ -1,10 +1,21 @@
 package db
 
 type Order struct {
-	Address string `json:"address"`
-	Get     string `json:"get"`
-	Give    string `json:"give"`
-	Amount  uint64 `json:"amount"`
-	Taken   uint64 `json:"taken"`
-	Price   uint64 `json:"price"`
+	Data  OrderData `json:"data"`
+	Taken int64     `json:"taken"`
+}
+
+type Side string
+
+const (
+	Bid = "bid"
+	Ask = "ask"
+)
+
+type OrderData struct {
+	Address []byte `json:"address"`
+	Base    string `json:"base"`
+	Quote   string `json:"quote"`
+	Amount  int64  `json:"amount"`
+	Price   int64  `json:"price"`
 }
